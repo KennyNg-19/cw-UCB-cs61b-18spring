@@ -14,7 +14,7 @@ public class IntList {
     /**
      * Remaining elements of list.
      */
-    public IntList rest; // "pointer"
+    public IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -28,7 +28,7 @@ public class IntList {
      * A List with null rest, and first = 0.
      */
     public IntList() {
-    /* NOTE: public IntList () { }  would also work. */
+        /* NOTE: public IntList () { }  would also work. */
         this(0, null);
     }
 
@@ -42,20 +42,16 @@ public class IntList {
             L = L.rest;
         }
     }
+
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
-     * 非递归写法
      */
     public static IntList squareListIterative(IntList L) {
         if (L == null) {
             return null;
         }
-
-        // 1. build head part
         IntList res = new IntList(L.first * L.first, null);
-
-        // 2. build rest part
-        IntList ptr = res; // temp ptr, 也可以不要
+        IntList ptr = res;
         L = L.rest;
         while (L != null) {
             ptr.rest = new IntList(L.first * L.first, null);
@@ -67,7 +63,6 @@ public class IntList {
 
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
-     * 递归写法
      */
     public static IntList squareListRecursive(IntList L) {
         if (L == null) {
@@ -86,18 +81,16 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-
         if(A == null) return B;
 
-    // get the end node, of which rest is NULL
+        // get the end node, of which rest is NULL
         IntList A_reference = A;
         while(A_reference.rest != null){
-            A_reference = A_reference.rest; // 因为这一步是在destruct A，所以不能直接用A 而是reference做指针
+            A_reference = A_reference.rest;
         }
         A_reference.rest = B;
         return A;
     }
-
 
     /**
      * Returns a list consisting of the elements of A followed by the
@@ -108,9 +101,8 @@ public class IntList {
         if(A == null)
             return B;
 
-        // A.first 是value 非引用....外层不断(A.first1, ( A.first2, (A.first3...
-        // 直到，递归到了base case, 返回B
         return new IntList(A.first, catenate(A.rest, B));
+
     }
 
 
@@ -232,4 +224,3 @@ public class IntList {
         return out.toString();
     }
 }
-
