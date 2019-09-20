@@ -59,12 +59,12 @@ public final class In {
     // assume language = English, country = US for consistency with System.out.
     private static final Locale LOCALE = Locale.US;
 
-    // the default token separator; we maintain the invariant that this value 
+    // the default token separator; we maintain the invariant that this value
     // is held by the scanner's delimiter between calls
     private static final Pattern WHITESPACE_PATTERN
             = Pattern.compile("\\p{javaWhitespace}+");
 
-    // makes whitespace characters significant 
+    // makes whitespace characters significant
     private static final Pattern EMPTY_PATTERN
             = Pattern.compile("");
 
@@ -161,11 +161,11 @@ public final class In {
     }
 
     /**
-     * Create an input stream from a given Scanner source; use with 
+     * Create an input stream from a given Scanner source; use with
      * <tt>new Scanner(String)</tt> to read from a string.
      * <p>
      * Note that this does not create a defensive copy, so the
-     * scanner will be mutated as you read on. 
+     * scanner will be mutated as you read on.
      */
     public In(Scanner scanner) {
         this.scanner = scanner;
@@ -183,7 +183,7 @@ public final class In {
 
     /**
      * Is the input empty (except possibly for whitespace)? Use this
-     * to know whether the next call to {@link #readString()}, 
+     * to know whether the next call to {@link #readString()},
      * {@link #readDouble()}, etc will succeed.
      */
     public boolean isEmpty() {
@@ -200,7 +200,7 @@ public final class In {
     }
 
     /**
-     * Is the input empty (including whitespace)? Use this to know 
+     * Is the input empty (including whitespace)? Use this to know
      * whether the next call to {@link #readChar()} will succeed. <p> Functionally
      * equivalent to {@link #hasNextLine()}.
      */
@@ -371,8 +371,8 @@ public final class In {
     }
 
     /**
-     * Reads all ints from a file 
-     * @deprecated Clearer to use 
+     * Reads all ints from a file
+     * @deprecated Clearer to use
      * <tt>new In(filename)</tt>.{@link #readAllInts()}
      */
     public static int[] readInts(String filename) {
@@ -381,7 +381,7 @@ public final class In {
 
     /**
      * Reads all doubles from a file
-     * @deprecated Clearer to use 
+     * @deprecated Clearer to use
      * <tt>new In(filename)</tt>.{@link #readAllDoubles()}
      */
     public static double[] readDoubles(String filename) {
@@ -390,7 +390,7 @@ public final class In {
 
     /**
      * Reads all strings from a file
-     * @deprecated Clearer to use 
+     * @deprecated Clearer to use
      * <tt>new In(filename)</tt>.{@link #readAllStrings()}
      */
     public static String[] readStrings(String filename) {
@@ -398,7 +398,7 @@ public final class In {
     }
 
     /**
-     * Reads all ints from stdin 
+     * Reads all ints from stdin
      * @deprecated Clearer to use {@link StdIn#readAllInts()}
      */
     public static int[] readInts() {

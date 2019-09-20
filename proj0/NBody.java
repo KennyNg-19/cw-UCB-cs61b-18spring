@@ -54,8 +54,10 @@ public class NBody {
     public static double readRadius(String filePath) {
         In in = new In(filePath);
         /* ONLY return the next one */
-        /* number */
-//        int number = in.readInt();
+        /* 有必要：跳过第一个int, number；
+        因为double因为可以自动cast to int, 如double a = 1; */
+        int number = in.readInt();
+
         double radius = in.readDouble();
 //        String planets = in.readString();
         return radius;
