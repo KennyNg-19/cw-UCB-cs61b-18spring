@@ -871,6 +871,29 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
         draw();
     }
 
+    /**
+     * Pause for t milliseconds. This method is intended to support computer animations.
+     * @param t number of milliseconds
+     */
+    public static void pause(int t) {
+        try {
+            Thread.sleep(t);
+        }
+        catch (InterruptedException e) {
+            System.out.println("Error sleeping");
+        }
+    }
+
+    /**
+     * Enable double buffering. All subsequent calls to
+     * drawing methods such as {@code line()}, {@code circle()},
+     * and {@code square()} will be deffered until the next call
+     * to show(). Useful for animations.
+     */
+    public static void enableDoubleBuffering() {
+        defer = true;
+    }
+
     // draw onscreen if defer is false
     private static void draw() {
         if (defer) return;
