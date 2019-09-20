@@ -5,7 +5,7 @@ public class Planet {
     public double yyVel;
     public double mass;
     public String imgFileName;
-    public final double G = 6.67e-11;
+    private static final double G = 6.67e-11;
 
 
     public Planet(double xP, double yP, double xV,
@@ -34,7 +34,7 @@ public class Planet {
 
     public double calcForceExertedBy(Planet p){
         double r = this.calcDistance(p);
-        return G * this.mass * p.mass / (r*r);
+        return Planet.G * this.mass * p.mass / (r*r);
     }
 
     /* 无需关心正负号，坐标系做差已经是 向量了
