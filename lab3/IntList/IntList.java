@@ -4,17 +4,17 @@ import java.util.Formatter;
  * Scheme-like pairs that can be used to form a list of integers.
  *
  * @author P. N. Hilfinger, with some modifications by Josh Hug and melaniecebula
- *         [Do not modify this file.]
+ * [Do not modify this file.]
  */
 public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest; // "pointer"
+    private IntList rest; // "pointer"
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -42,6 +42,7 @@ public class IntList {
             L = L.rest;
         }
     }
+
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
      * 非递归写法
@@ -87,11 +88,13 @@ public class IntList {
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
 
-        if(A == null) return B;
+        if (A == null){
+            return B;
+        }
 
         // get the end node, of which rest is NULL
         IntList A_reference = A;
-        while(A_reference.rest != null){
+        while (A_reference.rest != null) {
             // 因为这一步是在destruct A，所以不能直接用A 而是reference做指针
             A_reference = A_reference.rest;
         }
@@ -106,7 +109,7 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        if(A == null)
+        if (A == null)
             return B;
 
         // A.first 是value 非引用....外层不断(A.first1, ( A.first2, (A.first3...
@@ -119,8 +122,8 @@ public class IntList {
      * This method is destructive. If given null
      * as an input, returns null.
      */
-    public static IntList reverse(IntList A){
-        if(A==null || A.rest == null ) return A;
+    public static IntList reverse(IntList A) {
+        if (A == null || A.rest == null) return A;
 
         // 递归解法: 很难理解....
         /*IntList reversed = reverse(A.rest);
@@ -136,8 +139,8 @@ public class IntList {
 
 
             /* 很难理解中间这2步
-            * 因为一般的思想是，想着怎么用rest2reverse.first 在constructor里面！
-            * 但这里，无需那么做*/
+             * 因为一般的思想是，想着怎么用rest2reverse.first 在constructor里面！
+             * 但这里，无需那么做*/
 
             // rest2reverse 这里是在 临时存储new reversed！！！
             // 取出自己的first 加到 已经reversed的 前面，完成一次reverse(字面上是，将rest 换成 已经reversed部分)
