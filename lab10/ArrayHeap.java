@@ -256,10 +256,10 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
     /** Helper function to resize the backing array when necessary. */
     private void resize(int capacity) {
         Node[] temp = new ArrayHeap.Node[capacity];
-        for (int i = 1; i <= temp.length; i++) {
-            temp[i] = contents[i];
+        for (int i = 1; i < this.contents.length; i++) {
+            temp[i] = this.contents[i];
         }
-        contents = temp;
+        this.contents = temp;
     }
 
     @Test
@@ -413,4 +413,5 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             i += 1;
         }
     }
+
 }

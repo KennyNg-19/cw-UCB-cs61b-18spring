@@ -14,6 +14,10 @@ Q: What's something that was particularly inelegant in your code, if anything?
 
 A:
 
+Q: What did you learn by talking to your partner about writing ArrayDeque?
+
+A:
+
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
 
 A:
@@ -38,7 +42,11 @@ Q: What's something that was particularly inelegant in your code, if anything?
 
 A:
 
-Q: What do you wish you would have known before writing ArrayDeque, if anything?
+Q: What did you learn by talking to your partner about writing LinkedListDeque?
+
+A:
+
+Q: What do you wish you would have known before writing LinkedListDeque, if anything?
 
 A:
 
@@ -50,6 +58,6 @@ A:
 
 Meta:
 
-Q: This is the first time we've tried something like this. Did you like this design review process? Anything we should do differently next time?
+Q: Did you like this design review process? Anything we should do differently next time?
 
 A: 

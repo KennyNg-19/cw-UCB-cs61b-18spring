@@ -1,5 +1,5 @@
-package hw2;                       
+package hw2;
 
 public class PercolationStats {
 
-}                       
+}

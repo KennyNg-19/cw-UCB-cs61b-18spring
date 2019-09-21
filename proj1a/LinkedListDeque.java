@@ -172,9 +172,9 @@ public class LinkedListDeque<T> {
         return node.item;
     }
 
-    /*Same as get, but uses recursion.
-     * Tricky!!! 直接作用在LinkedList上，得用remove截取list了？？？
-     * 不行！ 这样会修改this list*/
+    /*Same as get, but uses recursion. */
+     /* Tricky!!! 直接作用在LinkedList上，得用remove截取list了？？？
+       不行！ 这样会修改this list */
 //    public T getRecursive(int index){
 //        if(index >= size()) return null;
 //        else if(index == 0){
@@ -186,7 +186,7 @@ public class LinkedListDeque<T> {
 //        return getRecursive(index - 1);
 //    }
 
-    /* 看来是要额外的参数了，单index不太行！
+    /* 看来是要额外的参数了，args为(单index) 不太行！
     * 可以额外增加helper function！，然后用getRecursive"调用"它
     * 就像那个sorting 递归实现一样，主函数来调用递归的部分！*/
 
