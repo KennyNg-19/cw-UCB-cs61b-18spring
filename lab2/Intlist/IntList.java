@@ -99,12 +99,6 @@ public class IntList {
         return A;
     }
 
-    public static void main(String[] args) {
-        IntList A = IntList.list(1,2);
-        IntList B = IntList.list(4, 5, 6);
-        IntList exp = IntList.list(1, 2, 3, 4, 5, 6);
-        System.out.println(IntList.catenate(A, B));
-    }
 
     /**
      * Returns a list consisting of the elements of A followed by the
@@ -137,7 +131,7 @@ public class IntList {
      * Returns a new IntList containing the ints in ARGS. You are not
      * expected to read or understand this method.
      */
-    public static IntList list(Integer... args) {
+    public static IntList of(Integer... args) {
         IntList result, p;
 
         if (args.length > 0) {
