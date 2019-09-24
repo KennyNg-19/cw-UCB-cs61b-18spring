@@ -32,7 +32,7 @@ public class ArithmeticTest {
         assertEquals(0, Arithmetic.sum(6, -6));
     }
 
-    /* Run the unit tests in this file. 
+    /* Run the unit tests in this file.
        This isn't necessary if you're using IntelliJ. See Lab 3 for more.*/
     public static void main(String... args) {
         jh61b.junit.TestRunner.runTests("all", ArithmeticTest.class);
