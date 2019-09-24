@@ -126,9 +126,10 @@ public class IntList {
     public static IntList reverse(IntList A) {
         if (A == null || A.rest == null) return A;
 
-        /* 递归解法, 很难理解: 参考 https://blog.csdn.net/guyuealian/article/details/51119499
+        /* 递归解法: 想象一下list结构，尾结点最好弄——简单的指针转向就好，无需中间变量！！
+         * 参考 https://blog.csdn.net/guyuealian/article/details/51119499
          * 在反转当前节点之前 先反转该节点的后续节点。
-         * 这样从头结点开始，层层深入直到尾结点，才开始真正的反转指针域的指向。
+         * 从头结点开始，层层深入到尾，才开始真正的反转指针域的指向!
          * 简单的说就是从尾结点开始，逆向反转各个结点的指针域指向，
          */
         // A本身就是该list的头
@@ -140,7 +141,7 @@ public class IntList {
         A.rest = null; // 前一结点的指针域令为null
 
 
-        // iteration解法
+        // iteration解法: 想象一下list结构，尾结点最好弄，但iteration注定要从头开始，需中间变量
         /*IntList reversed = null; // 已经reversed部分！
         IntList rest2reverse = A; // 如 1 -> 2 -> 3 -> null
         while (rest2reverse != null) {  // 1 -> 2 -> 3 -> null | 2 -> 3 -> null
