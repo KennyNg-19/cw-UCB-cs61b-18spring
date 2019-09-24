@@ -1,6 +1,7 @@
-
-
-public interface Deque<T> extends Iterable<T>{
+/**
+ *
+ */
+public interface Deque<T> extends Iterable<T> {
 
     void addFirst(T item);
 

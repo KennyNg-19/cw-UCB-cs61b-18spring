@@ -1,6 +1,6 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TestPalindrome {
     // You must use this palindrome, and not instantiate
@@ -19,7 +19,7 @@ public class TestPalindrome {
 
 
     @Test
-    public void testPalindrome(){
+    public void testPalindrome() {
         assertTrue(palindrome.isPalindrome(null));
         assertTrue(palindrome.isPalindrome(""));
         assertTrue(palindrome.isPalindrome("aba"));
@@ -38,4 +38,16 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome(null, offByOne));
         assertFalse(palindrome.isPalindrome("2222", offByOne));
     }
+
+    @Test
+    public void testIsPalindromeOffByN() {
+
+        assertTrue(palindrome.isPalindrome("binding", new OffByN(5)));
+        assertTrue(palindrome.isPalindrome("acdb", new OffByN(1)));
+        assertTrue(palindrome.isPalindrome(null, new OffByN(0)));
+        assertTrue(palindrome.isPalindrome("", new OffByN(0)));
+
+    }
+
+
 }
