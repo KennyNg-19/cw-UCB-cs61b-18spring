@@ -121,34 +121,46 @@ public class IntList {
      * Returns the reverse of the given IntList.
      * This method is destructive. If given null
      * as an input, returns null.
+     * 经典的反转列表题
      */
     public static IntList reverse(IntList A) {
         if (A == null || A.rest == null) return A;
 
-        // 递归解法: 很难理解....
-        /*IntList reversed = reverse(A.rest);
-        A.rest.rest = A;
-        A.rest = null;
-        return reversed;*/
+        /* 递归解法, 很难理解: 参考 https://blog.csdn.net/guyuealian/article/details/51119499
+         * 在反转当前节点之前 先反转该节点的后续节点。
+         * 这样从头结点开始，层层深入直到尾结点，才开始真正的反转指针域的指向。
+         * 简单的说就是从尾结点开始，逆向反转各个结点的指针域指向，
+         */
+        // A本身就是该list的头
+        // 把A看作是前一结点，A.rest 才是当前结点！！reversed是反转后新链表的头
+        IntList currentHead = A.rest;
+
+        IntList reversed = reverse(currentHead); // 被reverse的始终是 传参的rest !!
+        currentHead.rest = A; // 将当前结点的指针域指向前一节点！！
+        A.rest = null; // 前一结点的指针域令为null
+
 
         // iteration解法
-        IntList reversed = null; // 已经reversed部分！
+        /*IntList reversed = null; // 已经reversed部分！
         IntList rest2reverse = A; // 如 1 -> 2 -> 3 -> null
         while (rest2reverse != null) {  // 1 -> 2 -> 3 -> null | 2 -> 3 -> null
             IntList restList = rest2reverse.rest; // 2 -> 3 -> null | 3 -> null
 
 
-            /* 很难理解中间这2步
-             * 因为一般的思想是，想着怎么用rest2reverse.first 在constructor里面！
-             * 但这里，无需那么做*/
+            *//* 很难理解中间这2步——2个变量分别当临时变量！
+             * 可以参考 https://blog.csdn.net/feliciafay/article/details/6841115
+             * 因为一般的思想是，想着在constructor里面，怎么用rest2reverse.first！
+             * 但这里，无需那么做*//*
 
             // rest2reverse 这里是在 临时存储new reversed！！！
-            // 取出自己的first 加到 已经reversed的 前面，完成一次reverse(字面上是，将rest 换成 已经reversed部分)
-            rest2reverse.rest = reversed; // (reverse 是已经reversed的)
-            reversed = rest2reverse; // 赋值new reversed
+            // 取出自己的first + 之前已经reversed的 —> 完成一次reverse 
+            rest2reverse.rest = reversed; // (赋值语句字面上是，将rest 换成 已经reversed部分)
+            reversed = rest2reverse; // 赋值new reversed，完成一次reverse 
+
 
             rest2reverse = restList; // 2 -> 3 -> null | 3 -> null
-        }
+        }*/
+
         return reversed;
 
     }
