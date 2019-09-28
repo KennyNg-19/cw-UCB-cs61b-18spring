@@ -1,5 +1,5 @@
 // TODO: Make sure to make this class a part of the synthesizer package
-//package <package name>;
+package synthesizer;
 
 //Make sure this class is public
 public class GuitarString {
@@ -18,6 +18,10 @@ public class GuitarString {
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
+        buffer = new ArrayRingBuffer((int) Math.round(SR / frequency));
+        for (int i = 0; i < buffer.capacity(); i++) {
+            buffer.enqueue(0.0);
+        }
     }
 
 
@@ -28,20 +32,30 @@ public class GuitarString {
         //       double r = Math.random() - 0.5;
         //
         //       Make sure that your random numbers are different from each other.
+        for (int i = 0; i < buffer.capacity(); i++) {
+            /* 别忘了先 dequeue!!*/
+            buffer.dequeue();
+            buffer.enqueue(Math.random() - 0.5);
+        }
     }
 
     /* Advance the simulation one time step by performing one iteration of
-     * the Karplus-Strong algorithm. 
+     * the Karplus-Strong algorithm.
      */
     public void tic() {
         // TODO: Dequeue the front sample and enqueue a new sample that is
         //       the average of the two multiplied by the DECAY factor.
         //       Do not call StdAudio.play().
+        double first = buffer.dequeue();
+        double second = buffer.peek();
+
+        double result = DECAY * (first + second) / 2;
+        buffer.enqueue(result);
     }
 
     /* Return the double at the front of the buffer. */
     public double sample() {
         // TODO: Return the correct thing.
-        return 0;
+        return buffer.peek();
     }
 }
