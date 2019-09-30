@@ -67,7 +67,7 @@ public class SimpleOomage implements Oomage {
 
             /* make your hashCodes work well for any number of buckets,
              * you should ensure that it is not always a multiple of any number.
-             * 但这里疑问3属性都是5的倍数，所以
+             * 但这里因为3属性都是5的倍数，所以
              *  */
             return red / 5 * (int) Math.pow(31, 2) + green / 5 * 31 + blue / 5;
         }

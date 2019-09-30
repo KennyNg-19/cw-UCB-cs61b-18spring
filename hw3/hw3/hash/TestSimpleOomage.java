@@ -35,7 +35,7 @@ public class TestSimpleOomage {
          */
         SimpleOomage ooA = new SimpleOomage(5, 10, 20);
         SimpleOomage ooA2 = new SimpleOomage(20, 10, 5);
-        assertNotEquals(ooA.hashCode(), ooA2.hashCode());
+        assertNotEquals(ooA, ooA2); //自动调用 .toString！这里已经重写了！，所以要用HashCode比较！
     }
 
     @Test
