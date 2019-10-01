@@ -45,7 +45,7 @@ public class ArrayMap<K, V> implements Map61B<K, V> {
             throw new IllegalArgumentException("Null values not allowed.");
         }
         int index = keyIndex(key);
-        if (index == -1) {
+        if (index == -1) {// 不存在
             if (size == keys.length) {
                 resize(keys.length * 2);
             }
@@ -54,6 +54,7 @@ public class ArrayMap<K, V> implements Map61B<K, V> {
             size += 1;
             return;
         }
+        // 存在，update
         values[index] = value;
     }
 

@@ -1,10 +1,10 @@
 package lab9tester;
-import java.util.Set;
-import java.util.Map;
-import java.util.HashSet;
-import static org.junit.Assert.*;
-import org.junit.Test;
+
 import lab9.MyHashMap;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /** Tests of optional parts of lab 9. */
 public class TestMyHashMapExtra {
@@ -40,6 +40,7 @@ public class TestMyHashMapExtra {
         q.put("d","a");
         q.put("e","a");                         // a b c d e                            
         assertTrue(null != q.remove("e"));      // a b c d
+
         assertTrue(q.containsKey("a"));     
         assertTrue(q.containsKey("b"));
         assertTrue(q.containsKey("c"));
@@ -53,6 +54,25 @@ public class TestMyHashMapExtra {
         assertTrue(q.containsKey("a"));     
         assertTrue(q.containsKey("b"));
         assertTrue(q.containsKey("f"));
+    }
+
+    @Test
+    public void testRemoveWith2Params() {
+        MyHashMap<String, String> q = new MyHashMap<String, String>();
+        q.put("c", "a");
+        q.put("b", "a");
+        q.put("a", "a");
+        q.put("d", "a");
+        q.put("e", "a"); // a b c d e
+        assertTrue(null == q.remove("c", "adasca")); // a b c d e
+        assertTrue(null != q.remove("c", "a")); // a b d e
+        assertTrue("a" == q.remove("b", "a")); // a d e
+
+        assertFalse(q.containsKey("c"));
+        assertTrue(q.containsKey("a"));
+        assertFalse(q.containsKey("b"));
+        assertTrue(q.containsKey("d"));
+        assertTrue(q.containsKey("e"));
     }
 
     public static void main(String[] args) {

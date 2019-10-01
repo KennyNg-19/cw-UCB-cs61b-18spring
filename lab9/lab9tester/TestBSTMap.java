@@ -1,9 +1,9 @@
 package lab9tester;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
 import lab9.BSTMap;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * Tests by Brendan Hu, Spring 2015, revised for 2018 by Josh Hug
@@ -54,13 +54,18 @@ public class TestBSTMap {
     @Test
     public void sanityGetTest() {
         BSTMap<String, Integer> b = new BSTMap<String, Integer>();
+
         assertEquals(null, b.get("starChild"));
         assertEquals(0, b.size());
+
         b.put("starChild", 5);
         assertTrue(((Integer) b.get("starChild")).equals(5));
+
         b.put("KISS", 5);
         assertTrue(((Integer) b.get("KISS")).equals(5));
+
         assertNotEquals(null, b.get("starChild"));
+
         assertEquals(2, b.size());
     }
 
